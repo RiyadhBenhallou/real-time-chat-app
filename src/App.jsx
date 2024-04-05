@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import io from "socket.io-client";
 import Popup from './Popup.jsx';
 
-const socket = io.connect('https://ceddeb97-b370-4ab4-992a-18740d698be3-00-9f7v099mjcbh.kirk.replit.dev:3000/');
-// const socket = io.connect('http://localhost:3000/');
+// const socket = io.connect('https://ceddeb97-b370-4ab4-992a-18740d698be3-00-9f7v099mjcbh.kirk.replit.dev:3000/');
+const socket = io.connect("https://chat-app-backend-1yxp.onrender.com/")
 
 export default function App() {
   const [message, setMessage] = useState("");
