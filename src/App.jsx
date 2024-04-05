@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import io from "socket.io-client";
 import Popup from './Popup.jsx';
 
-// const socket = io.connect('https://ceddeb97-b370-4ab4-992a-18740d698be3-00-9f7v099mjcbh.kirk.replit.dev:3000/');
-const socket = io.connect('http://localhost:3000/');
+const socket = io.connect('https://ceddeb97-b370-4ab4-992a-18740d698be3-00-9f7v099mjcbh.kirk.replit.dev:3000/');
+// const socket = io.connect('http://localhost:3000/');
 
 export default function App() {
   const [message, setMessage] = useState("");
@@ -30,12 +30,12 @@ export default function App() {
   }, [theme])
 
 
-  const togglePopup = () => {
-    if (!room) {
-      return setPopup(true)
-    }
-    setPopup(!popup)
-  }
+  // const togglePopup = () => {
+  //   if (!room) {
+  //     return setPopup(true)
+  //   }
+  //   setPopup(!popup)
+  // }
 
   const handleChange = (e) => {
     setMessage(e.target.value);
@@ -58,25 +58,14 @@ export default function App() {
 
   return (
     <div className={`flex flex-col items-center w-full min-h-screen bg-slate-200 dark:bg-slate-900 relative`}>
-      {popup && <Popup setPopup={setPopup} username={username} setUsername={setUsername} room={room} setRoom={setRoom} socket={socket} />}
+      {<Popup popup={popup} setPopup={setPopup} theme={theme} setTheme={setTheme} username={username} setUsername={setUsername} room={room} setRoom={setRoom} socket={socket} options={options} />}
       <div className={`flex justify-center space-x-2 fixed top-10 right-50 left-50 z-[50] ${popup && 'hidden'}`}>
         <input value={message} onChange={handleChange} className="border rounded-lg placeholder:text-sm placeholder:text-gray-400 text-black dark:text-white focus:outline-gray-200 dark:focus:outline-slate-500 px-2 py-1 dark:bg-slate-700 dark:border-slate-700" placeholder="Enter your message..." />
 
         <button onClick={sendMessage} className="bg-red-500 py-1 px-2 rounded-lg text-white font-semibold hover:bg-red-600 dark:text-slate-900">Send</button>
 
       </div>
-      <div className="absolute flex  space-x-1 top-1 right-4 bg-white dark:bg-slate-700 p-1 rounded-lg">
-      {options.map(opt => {
-        return (
-          <button onClick={() => setTheme(opt.theme)} className={`w-4 h-4 text-sm rounded-lg hover:bg-gray-200 dark:hover:bg-slate-800 text-black dark:text-white ${theme === opt.theme && 'text-yellow-500 dark:text-emerald-500'}`}>
-            <ion-icon name={opt.icon}></ion-icon>
-          </button>
-        )
-        })}
-        <button onClick={togglePopup} className={`w-4 h-4 text-sm rounded-lg hover:bg-gray-200 dark:hover:bg-slate-800 text-black dark:text-white`}>
-          <ion-icon name="settings"></ion-icon>
-        </button>
-        </div>
+      
 
       <div className={`mt-20 white rounded-lg w-5/6 overflow-hidden relative ${popup && 'hidden'}`}>
         {messages.map((msg, index) => (
