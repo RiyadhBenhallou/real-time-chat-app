@@ -35,13 +35,18 @@ const Popup = ({ popup, setPopup, username, theme, setTheme, setUsername, room, 
       <div className="absolute flex  space-x-1 top-1 right-4 bg-white dark:bg-slate-700 p-1 rounded-lg z-[100]">
         {options.map(opt => {
           return (
-            <button onClick={() => setTheme(opt.theme)} className={`w-4 h-4 text-sm rounded-lg hover:bg-gray-200 dark:hover:bg-slate-800 text-black dark:text-white ${theme === opt.theme && 'text-yellow-500 dark:text-blue-500'}`}>
+            <button
+              onClick={() => setTheme(opt.theme)}
+              className={`w-4 h-4 text-sm rounded-lg hover:bg-gray-200 dark:hover:bg-slate-800 ${
+                theme === opt.theme ? 'text-yellow-500 dark:text-blue-500' : 'text-black dark:text-white'
+              }`}
+            >
               <ion-icon name={opt.icon}></ion-icon>
             </button>
           )
           })}
           <button onClick={togglePopup} className={`w-4 h-4 text-sm rounded-lg hover:bg-gray-200 dark:hover:bg-slate-800 text-black dark:text-white`}>
-            <ion-icon name="settings"></ion-icon>
+            <ion-icon name={popup ? "close" : "settings"}></ion-icon>
           </button>
           </div>
       
