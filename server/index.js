@@ -10,8 +10,8 @@ const httpServer = createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    //origin: "https://ceddeb97-b370-4ab4-992a-18740d698be3-00-9f7v099mjcbh.kirk.replit.dev",
-    origin: "http://localhost:5173/",
+    origin: "https://ceddeb97-b370-4ab4-992a-18740d698be3-00-9f7v099mjcbh.kirk.replit.dev",
+    // origin: "http://localhost:5173/",
     methods: ["GET", "POST"]
   }
 });
