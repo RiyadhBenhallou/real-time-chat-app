@@ -68,7 +68,7 @@ export default function App() {
       <div className="absolute flex  space-x-1 top-1 right-4 bg-white dark:bg-slate-700 p-1 rounded-lg">
       {options.map(opt => {
         return (
-          <button onClick={() => setTheme(opt.theme)} className={`w-4 h-4 text-sm rounded-lg hover:bg-gray-200 dark:hover:bg-slate-800 text-black dark:text-white ${theme === opt.theme && 'text-yellow-500 dark:text-sky-500'}`}>
+          <button onClick={() => setTheme(opt.theme)} className={`w-4 h-4 text-sm rounded-lg hover:bg-gray-200 dark:hover:bg-slate-800 text-black dark:text-white ${theme === opt.theme && 'text-yellow-500 dark:text-emerald-500'}`}>
             <ion-icon name={opt.icon}></ion-icon>
           </button>
         )
