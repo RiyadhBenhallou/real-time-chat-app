@@ -9,6 +9,7 @@ export default function App() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [username, setUsername] = useState("")
+  const [room, setRoom] = useState("")
   const [popup, setPopup] = useState(true);
   const [theme, setTheme] = useState('dark')
 
@@ -37,7 +38,7 @@ export default function App() {
   }
 
   const sendMessage = () => {
-    socket.emit("send-message", { message, username });
+    socket.emit("send-message", { message, username, room });
     setMessage(""); // Clear input after sending message
   }
 
@@ -53,7 +54,7 @@ export default function App() {
 
   return (
     <div className={`flex flex-col items-center w-full min-h-screen bg-slate-200 dark:bg-slate-900 relative`}>
-      {popup && <Popup setPopup={setPopup} username={username} setUsername={setUsername} />}
+      {popup && <Popup setPopup={setPopup} username={username} setUsername={setUsername} room={room} setRoom={setRoom} socket={socket} />}
       <div className={`flex justify-center space-x-2 fixed top-10 right-50 left-50 z-[50] ${popup && 'hidden'}`}>
         <input value={message} onChange={handleChange} className="border rounded-lg placeholder:text-sm placeholder:text-gray-400 text-black dark:text-white focus:outline-gray-200 dark:focus:outline-slate-500 px-2 py-1 dark:bg-slate-700 dark:border-slate-700" placeholder="Enter your message..." />
 
