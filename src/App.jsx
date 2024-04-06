@@ -41,9 +41,12 @@ export default function App() {
     setMessage(e.target.value);
   }
 
-  const sendMessage = () => {
+  const sendMessage = (e) => {
+  e.preventDefault(); // Prevent the default behavior of the button click
+  if (message.trim()) { // Check if the message is not empty
     socket.emit("send-message", { message, username, room });
     setMessage(""); // Clear input after sending message
+  }
   }
 
   useEffect(() => {
@@ -62,7 +65,7 @@ export default function App() {
       <div className={`flex justify-center space-x-2 absolute bottom-10 right-50 left-50 z-[50] ${popup && 'hidden'}`}>
         <input value={message} onChange={handleChange} className="border rounded-lg placeholder:text-sm placeholder:text-gray-400 text-black dark:text-white focus:outline-gray-200 dark:focus:outline-slate-500 px-2 py-1 dark:bg-slate-700 dark:border-slate-700" placeholder="Enter your message..." />
 
-        <button onClick={sendMessage} className="bg-red-500 py-1 px-2 rounded-lg text-white font-semibold hover:bg-red-600 dark:text-slate-900">Send</button>
+        <button onTouchEnd={sendMessage} className="bg-red-500 py-1 px-2 rounded-lg text-white font-semibold hover:bg-red-600 dark:text-slate-900 cursor-pointer">Send</button>
 
       </div>
       
