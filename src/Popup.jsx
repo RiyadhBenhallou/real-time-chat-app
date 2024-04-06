@@ -32,7 +32,7 @@ const Popup = ({ popup, setPopup, username, theme, setTheme, setUsername, room, 
 
   return(
     <>
-      <div className="absolute flex  space-x-1 top-1 right-4 bg-white dark:bg-slate-700 p-1 rounded-lg z-[100]">
+      <div className="absolute flex space-x-1 bottom-2 right-50 left-50 bg-white dark:bg-slate-700 p-1 rounded-lg z-[100]">
         {options.map(opt => {
           return (
             <button
