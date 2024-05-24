@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import io from "socket.io-client";
 
-export default function useMessage() {
+export default function useMessage(socket) {
 
 
   // const socket = io.connect('https://ceddeb97-b370-4ab4-992a-18740d698be3-00-9f7v099mjcbh.kirk.replit.dev:3000/');
-  const socket = io.connect("https://chat-app-backend-1yxp.onrender.com/")
+
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
     const [username, setUsername] = useState("")
@@ -43,10 +42,9 @@ export default function useMessage() {
 
     const sendMessage = (e) => {
     e.preventDefault(); // Prevent the default behavior of the button click
-    if (message.trim()) { // Check if the message is not empty
+// Check if the message is not empty
       socket.emit("send-message", { message, username, room });
       setMessage(""); // Clear input after sending message
-    }
     }
 
     useEffect(() => {

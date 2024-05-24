@@ -1,10 +1,14 @@
 import useMessage from './hooks/useMessage.js'
 import Popup from './Popup.jsx';
+import io from "socket.io-client";
+
+
+const socket = io.connect("https://chat-app-backend-1yxp.onrender.com")
 
 
 export default function App() {
 
-  const {message,
+  const { message,
           messages,
           room,
           popup,
@@ -17,7 +21,7 @@ export default function App() {
           handleRoomChange,
           handleSubmit,
           togglePopup,
-          setTheme} = useMessage()
+          setTheme } = useMessage(socket)
 
 
   return (
