@@ -1,34 +1,7 @@
 import { useState } from "react";
 
-const Popup = ({ popup, setPopup, username, theme, setTheme, setUsername, room, setRoom, socket, options }) => {
-  const [error, setError] = useState(false)
-
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value)
-  }
-  const handleRoomChange = (e) => {
-    setRoom(e.target.value)
-  }
-  const handleSubmit = () => {
-    if (!room) {
-      return setError(true)
-    }
-      setUsername(username)
-      socket.emit("join-room", { room })
-      setPopup(false)
-      error && setError(false)
-  }
+const Popup = ({ popup, handleUsernameChange, handleSubmit, togglePopup, username, theme, setTheme, handleRoomChange, room, options, error }) => {
   
-  const togglePopup = () => {
-    if (!room) {
-      setError(true)
-      return setPopup(true)
-    }
-    setUsername(username)
-    socket.emit("join-room", { room })
-    setPopup(!popup)
-    error && setError(false)
-  }
 
   return(
     <>
