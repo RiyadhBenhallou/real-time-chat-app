@@ -65,7 +65,7 @@ export default function App() {
       <div className={`flex justify-center space-x-2 absolute bottom-10 right-50 left-50 z-[50] ${popup && 'hidden'}`}>
         <input value={message} onChange={handleChange} className="border rounded-lg placeholder:text-sm placeholder:text-gray-400 text-black dark:text-white focus:outline-gray-200 dark:focus:outline-slate-500 px-2 py-1 dark:bg-slate-700 dark:border-slate-700" placeholder="Enter your message..." />
 
-        <button onTouchEnd={sendMessage} className="bg-red-500 py-1 px-2 rounded-lg text-white font-semibold hover:bg-red-600 dark:text-slate-900 cursor-pointer">Send</button>
+        <button onClick={sendMessage} className="bg-red-500 py-1 px-2 rounded-lg text-white font-semibold hover:bg-red-600 dark:text-slate-900 cursor-pointer">Send</button>
 
       </div>
       
